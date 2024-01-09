@@ -1,3 +1,5 @@
+// EDITED ON LAPTOP
+
 const list = document.querySelector('.list');
 const textbox = document.querySelector('.txtbox');
 const addButton = document.querySelector('.addBtn');
