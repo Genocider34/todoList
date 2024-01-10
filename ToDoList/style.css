@@ -1,7 +1,6 @@
 * {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
-
 .mainList {
     font-size: 5em;
     text-transform: uppercase;
@@ -9,22 +8,17 @@
     justify-content: center;
     text-align: center;
 }
-
 button {
     padding: 0.5em 1em;
 }
-
 .inputContainer {
     display: block;
     justify-content: center;
     text-align: center;
     margin: 1em;
 }
-
 .btnContainer {
     display: block;
     margin: 1em;
     justify-content: center;
 }
-
-

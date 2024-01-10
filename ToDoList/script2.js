@@ -26,7 +26,7 @@ addButton.addEventListener('click', function (x){
         newList.appendChild(textSpan);
 
         // adding border bottom 
-        newList.style.borderBottom = '1px solid black';
+        newList.style.border = '1px solid black';
         newList.style.padding = '1em';
 
         // adding to the list
