@@ -1,26 +1,28 @@
 export { removeDb };
 
-const completedDb = [];
-const removeDb = []; // for undo button
 const list = document.querySelector(".list");
 const textbox = document.querySelector(".txtbox");
 const addButton = document.querySelector(".addBtn");
 const deleteButton = document.querySelector(".deleteBtn");
 const undoButton = document.querySelector(".undoBtn");
-const database = [];
+
+// Data Storage
+const mainDatabase = [];
+const completedDb = [];
+const removeDb = []; // for undo button
 
 let newList; // li
 let checkbox; // checkbox
 let textSpan; // span
 
 const addingTask = () => {
-  const newTextbox = textbox.value.trim();
+  const newTextbox = textbox.value.trim(); // Avoids spaces
   if (newTextbox !== "") {
     // checkbox
     newList = document.createElement("li");
     checkbox = document.createElement("input");
-    checkbox.type = "checkbox";
-    newList.appendChild(checkbox);
+    checkbox.type = "checkbox"; // or checkbox.setAttribute('type','checkbox');
+    newList.appendChild(checkbox); // adds checkbox to the list ('li')
 
     // span
     textSpan = document.createElement("span");
@@ -35,27 +37,30 @@ const addingTask = () => {
 
     // adding to the list
     list.appendChild(newList);
-    database.push(newTextbox);
+    mainDatabase.push(newTextbox);
+    console.log(mainDatabase);
     textbox.value = "";
     isChecked();
   }
 };
 
-// const isChecked = () => {
-//   const checkboxes = list.querySelectorAll("input[type='checkbox']");
-//   newList = list.getElementsByTagName("li");
-//   checkboxes.forEach((checkbox, index) => {
-//     checkbox.addEventListener("change", (event) => {
-//       if (checkbox.checked === true) {
-//         const listItemToRemove = newList[index];
-//         list.removeChild(listItemToRemove);
-//         console.log(`${index + 1}: ${database[index]} is Completed`);
-//         completedDb.push(database[index]);
-//         console.log(completedDb);
-//       }
-//     });
-//   });
-// };
+const isChecked = () => {
+  const checkboxes = list.querySelectorAll("input[type='checkbox']");
+  newList = list.getElementsByTagName("li");
+  checkboxes.forEach((checkbox, index) => {
+    checkbox.addEventListener("change", (event) => {
+      if (checkbox.checked === true) {
+        const listItemToRemove = newList[index];
+        list.removeChild(listItemToRemove);
+        console.log(`${index + 1}: ${mainDatabase[index]} is Completed`);
+        completedDb.push(mainDatabase[index]);
+        mainDatabase.pop();
+        console.log(`Completed Database: ${completedDb}`);
+        console.log(mainDatabase);
+      }
+    });
+  });
+};
 
 textbox.addEventListener("keypress", function (event) {
   // Number 13 is "ENTER" key
@@ -67,7 +72,10 @@ addButton.addEventListener("click", function () {
   addingTask();
 });
 undoButton.addEventListener("click", function () {
+  mainDatabase.push(removeDb[removeDb.length - 1]);
+  console.log(mainDatabase);
   const undoTask = removeDb.pop(); // Get the last removed task from the removeDb array
+
   list.appendChild(undoTask); // Add the last removed task back to the list
 });
 deleteButton.addEventListener("click", function () {
@@ -76,4 +84,6 @@ deleteButton.addEventListener("click", function () {
   const lastTask = newList[newList.length - 1];
   list.removeChild(lastTask); // Deletes the last list
   removeDb.push(lastTask); // Store the deleted task on the removeDb array
+  mainDatabase.pop(lastTask);
+  console.log(mainDatabase);
 });
