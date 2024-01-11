@@ -1,3 +1,3 @@
-import { removeDb } from '../menu/script.js';
+import { completedDb } from "../menu/script.js";
 
-console.log(removeDb);
+console.log(completedDb);

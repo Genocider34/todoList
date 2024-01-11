@@ -1,4 +1,4 @@
-export { removeDb };
+export { completedDb };
 
 const list = document.querySelector(".list");
 const textbox = document.querySelector(".txtbox");
@@ -48,7 +48,7 @@ const isChecked = () => {
   const checkboxes = list.querySelectorAll("input[type='checkbox']");
   newList = list.getElementsByTagName("li");
   checkboxes.forEach((checkbox, index) => {
-    checkbox.addEventListener("change", (event) => {
+    checkbox.addEventListener("change", () => {
       if (checkbox.checked === true) {
         const listItemToRemove = newList[index];
         list.removeChild(listItemToRemove);
