@@ -30,10 +30,7 @@ const addingTask = () => {
     newList.appendChild(textSpan);
 
     // adding border bottom
-    newList.style.border = "1px solid black";
-    newList.style.borderRadius = "12px";
-    newList.style.marginBottom = "1em";
-    newList.style.padding = "1em";
+    newList.classList.add("listBorder");
 
     // adding to the list
     list.appendChild(newList);
