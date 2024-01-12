@@ -1,10 +1,9 @@
-export { completedDb };
-
 const list = document.querySelector(".list");
 const textbox = document.querySelector(".txtbox");
 const addButton = document.querySelector(".addBtn");
 const deleteButton = document.querySelector(".deleteBtn");
 const undoButton = document.querySelector(".undoBtn");
+const historyButton = document.querySelector(".historyLink");
 
 // Data Storage
 const mainDatabase = [];
@@ -59,12 +58,17 @@ const isChecked = () => {
   });
 };
 
+historyButton.addEventListener("click", () => {
+  // temporary
+});
+
 textbox.addEventListener("keypress", function (event) {
   // Number 13 is "ENTER" key
   if (event.keyCode === 13) {
     addingTask();
   }
 });
+
 addButton.addEventListener("click", function () {
   addingTask();
 });
@@ -84,3 +88,5 @@ deleteButton.addEventListener("click", function () {
   mainDatabase.pop(lastTask);
   console.log(mainDatabase);
 });
+
+export { completedDb };

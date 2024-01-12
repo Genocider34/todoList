@@ -1,3 +1,4 @@
 import { completedDb } from "../menu/script.js";
 
-console.log(completedDb);
+const cDb = completedDb;
+console.log(cDb);
