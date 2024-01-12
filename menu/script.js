@@ -58,10 +58,6 @@ const isChecked = () => {
   });
 };
 
-historyButton.addEventListener("click", () => {
-  // temporary
-});
-
 textbox.addEventListener("keypress", function (event) {
   // Number 13 is "ENTER" key
   if (event.keyCode === 13) {
