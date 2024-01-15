@@ -45,3 +45,7 @@ fieldset {
   background-color: crimson;
   padding: 3em;
 }
+
+.active-completed {
+  text-decoration: line-through;
+}
