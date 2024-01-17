@@ -51,6 +51,7 @@ const isChecked = () => {
     checkbox.addEventListener("change", () => {
       if (checkbox.checked) {
         const listRemove = checkbox.closest("li"); // finds the closest 'li' element from the cbox itself
+        mainDatabase.pop(listRemove);
         completedDb.push(listRemove);
         listRemove.remove(); // remove the selected task if it exist
       }
@@ -60,9 +61,17 @@ const isChecked = () => {
 
 // ------------------------------- EVENTS -----------------------------------
 checkButton.addEventListener("click", () => {
-  console.log(`Main Database: ${mainDatabase}`);
-  console.log(`Deleted Database: ${removeDb}`);
-  console.log(`Completed Database: ${completedDb}`);
+  mainDatabase.forEach((x, i) => console.log(`Task #${i + 1}: ${x}`));
+  console.log("--------------------------------");
+  console.log(`Deleted Database:`);
+  removeDb.forEach((x, i) =>
+    console.log(`Deleted #${i + 1}: ${x.textContent}`)
+  );
+  console.log("--------------------------------");
+  console.log(`Completed Database:`);
+  completedDb.forEach((x, i) =>
+    console.log(`Completed Task #${i + 1}: ${x.textContent}`)
+  );
   console.log();
 });
 
