@@ -1,4 +1,42 @@
+body {
+  background-color: #121212;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  color: white;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  background-color: #3700b3;
+  max-width: 100%;
+  width: 400px;
+  height: 500px;
+  border-radius: 10px;
+}
+
+.input-container {
+  display: flex;
+}
+
+input {
+  border-radius: 10px;
+}
+
+/* LOGIC */
 .active:hover {
   text-decoration: line-through;
   cursor: pointer;
+}
+
+.active {
+  display: flex;
+  margin: 10px;
+  padding: 10px 15px;
+  background-color: #121212;
+  border-radius: 10px;
 }

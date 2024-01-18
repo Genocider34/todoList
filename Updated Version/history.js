@@ -1,3 +1,3 @@
-import { completeDb } from "./script";
+import { todoList } from "./script.js";
 
-console.log(completeDb);
+console.log(todoList);
