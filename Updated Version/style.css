@@ -1,18 +1,23 @@
 body {
-  background-color: #121212;
+  background-color: hsl(0, 0%, 8%);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  color: white;
+  color: hsl(75, 94%, 57%);
+}
+
+h1 {
+  text-decoration: underline;
+  text-transform: uppercase;
 }
 
 .container {
   display: flex;
   flex-direction: column;
   text-align: center;
-  background-color: #3700b3;
+  background-color: hsl(0, 0%, 12%);
   max-width: 100%;
   width: 400px;
   height: 500px;
@@ -28,15 +33,22 @@ input {
 }
 
 /* LOGIC */
-.active:hover {
+.active:hover,
+input[type="checkbox"]:checked + span {
+  color: hsl(0, 0%, 12%);
   text-decoration: line-through;
   cursor: pointer;
 }
 
 .active {
+  color: hsl(0, 0%, 12%);
   display: flex;
   margin: 10px;
   padding: 10px 15px;
-  background-color: #121212;
+  background-color: hsl(75, 94%, 57%);
   border-radius: 10px;
+}
+
+.checkbox {
+  display: none;
 }
