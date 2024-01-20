@@ -1,5 +1,4 @@
 /* BUGS - NEED FIXING
-  1. Database - When I click the first and middle portion of the 'task', the database array displays incorrectly
 
   ADD FEATURES
   1. Add a checkbox from added task
@@ -31,21 +30,31 @@ form.addEventListener("submit", (e) => {
     const item = document.createElement("div");
     const checkbox = document.createElement("input");
     const span = document.createElement("span");
+    const trashIcon = document.createElement("i");
+    trashIcon.classList.add("fa-solid", "fa-trash");
+    trashIcon.style.color = "black";
+    trashIcon.addEventListener("click", () => {
+      list.removeChild(item);
+      const index = list.indexOf[item];
+      data.splice(index, 1);
+    });
+
     checkbox.type = "checkbox";
 
     span.innerText = usersInput;
     item.classList.add("active");
     item.appendChild(checkbox);
     item.appendChild(span);
+    item.appendChild(trashIcon);
     list.appendChild(item);
     input.value = "";
 
     data.push(item);
-    item.addEventListener("click", () => {
-      list.removeChild(item);
-      const index = data.indexOf(item); // NEW
-      data.splice(index, 1); // NEW
-    });
+    // item.addEventListener("click", () => {
+    //   list.removeChild(item);
+    //   const index = data.indexOf(item); // the value of the selected task 'item'
+    //   data.splice(index, 1); // deletes the selected task
+    // });
   }
 });
 
