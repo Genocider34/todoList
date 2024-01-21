@@ -8,6 +8,7 @@
   4. Data Storage
   5. Add a tags feature
   6. Sort by tags or date created
+  7. Display # of task completed
 */
 
 // ELEMENTS
@@ -15,7 +16,8 @@ const input = document.querySelector(".input-user"); //txtbox
 const form = document.querySelector(".main-form"); // form
 const check = document.querySelector(".check"); //tester
 const list = document.querySelector(".list"); // div
-const data = [];
+
+let data = [];
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -71,14 +73,29 @@ form.addEventListener("submit", (e) => {
 */
 
     // Data manipulation
-    data.push(textCb);
+    const id = data.length + 1;
+    const dataAdd = [
+      {
+        id: id,
+        item: span.innerText,
+        isCompleted: false,
+      },
+    ];
+
+    data.push(dataAdd);
 
     // events
     trashIcon.addEventListener("click", () => {
-      list.removeChild(item);
-      const index = data.indexOf[item];
-      data.splice(index, 1);
+      // const index = data.indexOf[item];
+      // data.splice(index, 1);
+      // data.isChecked = true;
+      // if (data.isChecked) {
+      //   list.removeChild(item);
+      // }
+      // const deleteItem = "1";
+      // data = data.filter((x) => x.id !== deleteItem);
     });
+    console.log(data);
 
     // item.addEventListener("click", () => {
     //   list.removeChild(item);
