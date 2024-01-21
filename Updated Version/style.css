@@ -1,15 +1,19 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+
 body {
-  background-color: hsl(0, 0%, 8%);
+  font-size: 14px;
+  background-color: #2a2e34;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  color: hsl(75, 94%, 57%);
+  color: #3b3f46;
+  font-family: "Roboto", sans-serif;
 }
 
 h1 {
-  text-decoration: underline;
+  color: #f5b301;
   text-transform: uppercase;
 }
 
@@ -17,42 +21,45 @@ h1 {
   display: flex;
   flex-direction: column;
   text-align: center;
-  background-color: hsl(0, 0%, 12%);
+  background-color: #3b3f46;
+  box-shadow: 2px 4px 5px #fed053;
   max-width: 100%;
   width: 400px;
   height: 500px;
   border-radius: 10px;
 }
 
-.input-container {
-  display: flex;
-}
-
-input {
-  border-radius: 10px;
+.input-user {
   margin-bottom: 10px;
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  outline: none;
+  background-color: #3b3f46;
+  border-bottom: 1px solid #f5b301;
+  color: #fed053;
 }
-
-/* LOGIC
-.active:hover,
-input[type="checkbox"]:checked + span {
-  color: hsl(0, 0%, 12%);
-  text-decoration: line-through;
-  cursor: pointer;
-} */
 
 i {
   cursor: pointer;
-  padding: 0 5px;
-  color: red;
+  color: #3b3f46;
+  margin: 0 5px;
 }
 
 .item {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: green;
+  background-color: #f5b301;
   margin: 10px;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.textCb {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .textCb:hover {

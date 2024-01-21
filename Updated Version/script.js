@@ -1,14 +1,17 @@
 /* BUGS - NEED FIXING
-
+  1. Checkbox -> Whenever the task or checkbox is hover, it must automatically checks the checkbox
+  
   ADD FEATURES
-  1. Add a checkbox from added task
-  2. Add a delete icon from added task
-  3. Add a completed task history page
-  4. Add a edit icon from added ask
+  1. Add a completed task history page
+  2. Edit Feature -> whenever the edit icon clicked, the selected task must be editable.
+  3. Login and Register System
+  4. Data Storage
+  5. Add a tags feature
+  6. Sort by tags or date created
 */
 
 // ELEMENTS
-const input = document.querySelector(".input"); //txtbox
+const input = document.querySelector(".input-user"); //txtbox
 const form = document.querySelector(".main-form"); // form
 const check = document.querySelector(".check"); //tester
 const list = document.querySelector(".list"); // div
@@ -17,7 +20,7 @@ const data = [];
 form.addEventListener("submit", (e) => {
   e.preventDefault();
 
-  const usersInput = input.value.trim(); //Prevents white spaces of input
+  let usersInput = input.value.trim(); //Prevents white spaces of input
   if (usersInput !== "") {
     // divs
     const item = document.createElement("div");
@@ -77,10 +80,19 @@ form.addEventListener("submit", (e) => {
       data.splice(index, 1);
     });
 
-    item.addEventListener("click", () => {
+    // item.addEventListener("click", () => {
+    //   list.removeChild(item);
+    //   const index = data.indexOf[item]; // the element(array) of the selected task 'item'
+    //   data.splice(index, 1); // deletes the selected task.
+    // });
+
+    editIcon.addEventListener("click", () => {
+      input.value = span.innerText;
+      span.innerText = input.value;
       list.removeChild(item);
-      const index = data.indexOf(item); // the element(array) of the selected task 'item'
-      data.splice(index, 1); // deletes the selected task.
+      const index = data.indexOf[item];
+      data.splice(index, 1);
+      input.focus();
     });
   }
 });
