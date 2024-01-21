@@ -30,29 +30,32 @@ h1 {
 
 input {
   border-radius: 10px;
+  margin-bottom: 10px;
 }
 
-/* LOGIC */
+/* LOGIC
 .active:hover,
 input[type="checkbox"]:checked + span {
   color: hsl(0, 0%, 12%);
   text-decoration: line-through;
   cursor: pointer;
-}
-
-.active {
-  color: hsl(0, 0%, 12%);
-  display: flex;
-  margin: 10px;
-  padding: 10px 15px;
-  background-color: hsl(75, 94%, 57%);
-  border-radius: 10px;
-}
-
-.checkbox {
-  display: none;
-}
-
-/* .trash-icon {
-  display: none;
 } */
+
+i {
+  cursor: pointer;
+  padding: 0 5px;
+  color: red;
+}
+
+.item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: green;
+  margin: 10px;
+}
+
+.textCb:hover {
+  text-decoration: line-through;
+  cursor: pointer;
+}
