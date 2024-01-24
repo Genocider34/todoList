@@ -86,14 +86,12 @@ form.addEventListener("submit", (e) => {
 
     // events
     trashIcon.addEventListener("click", () => {
-      // const index = data.indexOf[item];
-      // data.splice(index, 1);
-      // data.isChecked = true;
-      // if (data.isChecked) {
-      //   list.removeChild(item);
-      // }
-      // const deleteItem = "1";
-      // data = data.filter((x) => x.id !== deleteItem);
+      const index = data.indexOf[item];
+      data.splice(index, 1);
+      data.isChecked = true;
+      if (data.isChecked) {
+        list.removeChild(item);
+      }
     });
     console.log(data);
 
