@@ -28,7 +28,7 @@ function userValidation() {
     createData(inputUser);
     // dataCheck();
   }
-  deleteData(trashIcon);
+  deleteData(trashIcon, newLI);
   // completedData(newLI);
 }
 
@@ -42,9 +42,9 @@ function deleteData(icon, li) {
     This space deletes the selected data object when the event is click
     ->use the boolean
     */
-    const deleteID = data.id;
-    const filteredID = data.filter((x) => x.id !== deleteID); // if data.id=1 !== 1
-    data = filteredID;
+    const itemId = li.dataset.itemId; // get the ID of the item to be deleted from the dataset
+    data = data.filter((item) => item.id !== parseInt(itemId)); // filter out the item with the matching ID
+    console.log(data); // log the updated data array
     console.log(data);
   });
 }
@@ -52,6 +52,10 @@ function deleteData(icon, li) {
 // Currently in-progress
 function completedData(task) {
   task.addEventListener("click", () => {
+    const deleteID = 1;
+    data.filter((item) => item.id !== deleteID);
+    console.log(data);
+
     task.remove(); // deletes the append LI
 
     /* 
