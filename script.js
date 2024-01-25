@@ -1,121 +1,77 @@
-/* BUGS - NEED FIXING
-  1. Checkbox -> Whenever the task or checkbox is hover, it must automatically checks the checkbox
-  
-  ADD FEATURES
-  1. Add a completed task history page
-  2. Edit Feature -> whenever the edit icon clicked, the selected task must be editable.
-  3. Login and Register System
-  4. Data Storage
-  5. Add a tags feature
-  6. Sort by tags or date created
-  7. Display # of task completed
-*/
-
-// ELEMENTS
-const input = document.querySelector(".input-user"); //txtbox
-const form = document.querySelector(".main-form"); // form
-const check = document.querySelector(".check"); //tester
-const list = document.querySelector(".list"); // div
-
+const form = document.querySelector("form");
+const ul = document.querySelector("ul");
 let data = [];
+let filteredID;
+
+// function dataCheck() {
+//   data.forEach((x) => {
+//     console.log(x);
+//   });
+// }
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
-
-  let usersInput = input.value.trim(); //Prevents white spaces of input
-  if (usersInput !== "") {
-    // divs
-    const item = document.createElement("div");
-    const textCb = document.createElement("div");
-    const icons = document.createElement("div");
-
-    // clickables
-    const checkbox = document.createElement("input");
-    checkbox.type = "checkbox";
-    const span = document.createElement("span");
-    const trashIcon = document.createElement("i");
-    const editIcon = document.createElement("i");
-
-    // icon adding
-    editIcon.classList.add("fa-solid", "fa-pencil");
-    trashIcon.classList.add("fa-solid", "fa-trash");
-
-    // others
-    span.innerText = usersInput;
-    input.value = "";
-
-    // adding classes to the divs
-    item.classList.add("item");
-    textCb.classList.add("textCb");
-
-    // appending
-    list.appendChild(item);
-    item.appendChild(textCb);
-    textCb.appendChild(checkbox);
-    textCb.appendChild(span);
-    icons.appendChild(editIcon);
-    icons.appendChild(trashIcon);
-    item.appendChild(icons);
-
-    /* ------------ OVERVIEW -----------------------
-    <div class="list">
-       <div class="item">
-           <div class="textCb">
-              <input type="checkbox" />
-              <span></span>
-            </div>
-            <div class="icons">
-              <i class="trash-icon" />
-              <i class="edit-icon" />
-            </div>
-        </div>
-    </div>
-*/
-
-    // Data manipulation
-    const id = data.length + 1;
-    const dataAdd = [
-      {
-        id: id,
-        item: span.innerText,
-        isCompleted: false,
-      },
-    ];
-
-    data.push(dataAdd);
-
-    // events
-    trashIcon.addEventListener("click", () => {
-      const index = data.indexOf[item];
-      data.splice(index, 1);
-      data.isChecked = true;
-      if (data.isChecked) {
-        list.removeChild(item);
-      }
-    });
-    console.log(data);
-
-    // item.addEventListener("click", () => {
-    //   list.removeChild(item);
-    //   const index = data.indexOf[item]; // the element(array) of the selected task 'item'
-    //   data.splice(index, 1); // deletes the selected task.
-    // });
-
-    editIcon.addEventListener("click", () => {
-      input.value = span.innerText;
-      span.innerText = input.value;
-      list.removeChild(item);
-      const index = data.indexOf[item];
-      data.splice(index, 1);
-      input.focus();
-    });
-  }
+  userValidation();
 });
 
-// check.addEventListener("click", () => {
-//   console.log("*******************");
-//   data.forEach((x, i) => {
-//     console.log(`Task #${i + 1}: "${x.innerText}"`);
-//   });
-//   console.log("*******************");
-// });
+function userValidation() {
+  const inputUser = form.elements[0].value;
+  let newLI;
+  let trashIcon;
+  if (inputUser.trim() !== "") {
+    newLI = document.createElement("LI");
+    trashIcon = document.createElement("i");
+    trashIcon.classList.add("fa-solid", "fa-trash");
+
+    newLI.innerText = inputUser;
+    newLI.appendChild(trashIcon);
+    ul.appendChild(newLI);
+    form.elements[0].value = "";
+    createData(inputUser);
+  }
+  deleteData(trashIcon, newLI);
+}
+
+// function updateData(task) {}
+
+function deleteData(icon, li) {
+  data.isDeleted = true;
+  icon.addEventListener("click", () => {
+    icon.parentElement.remove(); // deletes the append LI
+    /* 
+    This space deletes the selected data object when the event is click
+    ->use the boolean
+    */
+    const deleteID = 1; // sample 1;
+    filteredID = data.filter((item) => item.id !== deleteID);
+    data = filteredID;
+    console.log(data);
+  });
+}
+
+// Currently in-progress
+function completedData(task) {
+  task.addEventListener("click", () => {
+    task.remove(); // deletes the append LI
+
+    /* 
+    This space deletes the selected data object when the event is click
+    ->use the boolean
+    */
+  });
+}
+
+// Done
+function createData(input) {
+  let idAdd = 1;
+  for (let i = 0; i < data.length; i++) {
+    idAdd = data[i].id + 1;
+  }
+  data.push({
+    id: idAdd,
+    item: input,
+    isDeleted: false,
+  });
+
+  // localStorage.setItem("dataLocal", JSON.stringify(data));
+}
