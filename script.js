@@ -25,8 +25,12 @@ function userValidation() {
     editIcon = document.createElement("i");
     editIcon.classList.add("fa-solid", "fa-pen-to-square");
 
-    newLI.innerText = inputUser; //li
+    editIcon.addEventListener("click", () => {
+      form.elements[0].value = newLI.innerText;
+      editIcon.parentElement.remove();
+    });
 
+    newLI.innerText = inputUser; //li
     newLI.appendChild(editIcon);
     newLI.appendChild(trashIcon);
     ul.appendChild(newLI);
@@ -34,8 +38,8 @@ function userValidation() {
     createData(inputUser);
   }
 
-  completedData(newLI, tempID);
-  deleteData(trashIcon, tempID);
+  // completedData(newLI, tempID);
+  // deleteData(trashIcon, tempID);
 }
 
 // function updateData(task, input) {

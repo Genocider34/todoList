@@ -6,3 +6,21 @@ li:hover {
 i:hover {
   cursor: pointer;
 }
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+}
+
+ul {
+}
+
+li {
+  padding: 10px;
+}
+
+i {
+  padding: 0 10px;
+}
