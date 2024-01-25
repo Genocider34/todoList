@@ -3,12 +3,6 @@ const ul = document.querySelector("ul");
 let data = [];
 let tempID = 1;
 
-// function dataCheck() {
-//   data.forEach((x) => {
-//     console.log(x);
-//   });
-// }
-
 form.addEventListener("submit", (e) => {
   e.preventDefault();
   userValidation();
@@ -16,36 +10,37 @@ form.addEventListener("submit", (e) => {
 
 function userValidation() {
   const inputUser = form.elements[0].value; // string
+  const withoutValue = form.elements[0];
   let newLI;
   let trashIcon;
   if (inputUser.trim() !== "") {
-    newLI = document.createElement("LI"); //li
-    trashIcon = document.createElement("i");
-    trashIcon.classList.add("fa-solid", "fa-trash");
-    editIcon = document.createElement("i");
-    editIcon.classList.add("fa-solid", "fa-pen-to-square");
+    const contents = {
+      list: (newLI = document.createElement("LI")),
+      trash: (trashIcon = document.createElement("i")),
+      edit: (editIcon = document.createElement("i")),
+      icons: (icons = document.createElement("DIV")),
+      text: (span = document.createElement("SPAN")),
+    };
 
-    editIcon.addEventListener("click", () => {
-      form.elements[0].value = newLI.innerText;
-      editIcon.parentElement.remove();
-    });
+    contents.trash.classList.add("fa-solid", "fa-trash");
+    contents.edit.classList.add("fa-solid", "fa-pen-to-square");
+    contents.text.innerText = inputUser;
 
-    newLI.innerText = inputUser; //li
-    newLI.appendChild(editIcon);
-    newLI.appendChild(trashIcon);
-    ul.appendChild(newLI);
-    form.elements[0].value = "";
+    contents.list.appendChild(contents.text);
+    contents.icons.appendChild(contents.edit);
+    contents.icons.appendChild(contents.trash);
+    contents.list.appendChild(contents.icons);
+    ul.appendChild(contents.list);
     createData(inputUser);
+    form.elements[0].value = "";
   }
 
-  // completedData(newLI, tempID);
-  // deleteData(trashIcon, tempID);
+  updateData(editIcon, newLI, withoutValue, inputUser, tempID);
+  readData(newLI, tempID);
+  deleteData(trashIcon, tempID);
 }
 
-// function updateData(task, input) {
-//   task.innerText =
-// }
-
+// ------------------CRUD Functions --------------------------
 function createData(input) {
   for (let i = 0; i < data.length; i++) {
     tempID = data[i].id + 1;
@@ -54,19 +49,39 @@ function createData(input) {
     id: tempID,
     item: input,
   });
-
+  console.log(data);
   // localStorage.setItem("dataLocal", JSON.stringify(data));
 }
-function deleteData(icon, id) {
-  icon.addEventListener("click", () => {
-    icon.parentElement.remove(); // deletes the append LI
 
+function readData(task, id) {
+  task.addEventListener("click", () => {
+    // DOM
+    task.remove();
+
+    // Data Manipulation
     data = data.filter((item) => item.id !== id);
   });
 }
-function completedData(task, id) {
-  task.addEventListener("click", () => {
-    task.remove(); // deletes the append LI
+
+function updateData(icon, task, input, inputUser, id) {
+  icon.addEventListener("click", () => {
+    // DOM
+    task.remove();
+    input.value = inputUser;
+    input.focus();
+
+    // Data Manipulation
     data = data.filter((item) => item.id !== id);
+  });
+}
+
+function deleteData(icon, id) {
+  icon.addEventListener("click", () => {
+    // DOM
+    icon.parentElement.parentElement.remove();
+
+    // Data Manipulation
+    data = data.filter((item) => item.id !== id);
+    console.log(data);
   });
 }

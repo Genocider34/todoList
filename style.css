@@ -1,26 +1,46 @@
-li:hover {
-  text-decoration: line-through;
-  cursor: pointer;
-}
-
-i:hover {
-  cursor: pointer;
+* {
+  box-sizing: border-box;
 }
 
 body {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 80vh;
+  padding: 2em;
 }
 
-ul {
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+span:hover {
+  text-decoration: line-through;
+  cursor: pointer;
+}
+
+i:hover {
+  cursor: pointer;
+  color: red;
+}
+h1 {
+  margin-bottom: 10px;
+  text-transform: uppercase;
 }
 
 li {
+  width: 800px;
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid black;
+  border-radius: 10px;
   padding: 10px;
+  margin: 10px 0;
+  list-style-type: none;
 }
 
 i {
-  padding: 0 10px;
+  padding: 0 6px;
 }
