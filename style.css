@@ -1,12 +1,32 @@
+@import url("https://fonts.googleapis.com/css?family=Noto%20Sans%20Masaram%20Gondi:700|Noto%20Sans%20Masaram%20Gondi:400");
+
+:root {
+  --text: #dbf2fd;
+  --background: #02131c;
+  --primary: #82d0f8;
+  --secondary: #100aa4;
+  --accent: #631cf2;
+  --linearPrimarySecondary: linear-gradient(#91b0e1, #55237e);
+  --linearPrimaryAccent: linear-gradient(#91b0e1, #c13eca);
+  --linearSecondaryAccent: linear-gradient(#55237e, #c13eca);
+  --radialPrimarySecondary: radial-gradient(#91b0e1, #55237e);
+  --radialPrimaryAccent: radial-gradient(#91b0e1, #c13eca);
+  --radialSecondaryAccent: radial-gradient(#55237e, #c13eca);
+}
+
 * {
   box-sizing: border-box;
 }
 
 body {
+  color: var(--text);
+  background-color: var(--background);
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 2em;
+  font-family: "Noto Sans Masaram Gondi";
+  font-weight: 400;
 }
 
 .container {
@@ -23,22 +43,48 @@ span:hover {
 
 i:hover {
   cursor: pointer;
-  color: red;
+  color: orangered;
 }
+
 h1 {
-  margin-bottom: 10px;
+  color: var(--radialPrimaryAccent);
+  margin-bottom: 3rem;
   text-transform: uppercase;
+  font-weight: 700;
+  font-size: 5rem;
+}
+
+#input-user {
+  font-family: "Noto Sans Masaram Gondi";
+  color: var(--text);
+  border: none;
+  background-color: var(--background);
+  outline: none;
+  border-bottom: 2px solid #82d0f8;
+  width: 20rem;
+  margin-bottom: 1rem;
+}
+
+#input-user:focus {
+  border-color: orangered;
+  transition: border-color 300ms ease-in-out;
 }
 
 li {
   width: 800px;
   display: flex;
   justify-content: space-between;
-  border: 1px solid black;
+  border: 3px solid var(--primary);
+  background-color: #0e0c04;
   border-radius: 10px;
   padding: 10px;
   margin: 10px 0;
   list-style-type: none;
+}
+
+li:hover {
+  border-color: orangered;
+  transition: border-color color 300ms ease-in-out;
 }
 
 i {

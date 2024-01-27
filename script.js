@@ -1,5 +1,6 @@
 const form = document.querySelector("form");
 const ul = document.querySelector("ul");
+// data = JSON.parse(localStorage.getItem("data")) || [];
 let data = [];
 let tempID = 1;
 
@@ -11,8 +12,6 @@ form.addEventListener("submit", (e) => {
 function userValidation() {
   const inputUser = form.elements[0].value; // string
   const withoutValue = form.elements[0];
-  let newLI;
-  let trashIcon;
   if (inputUser.trim() !== "") {
     const contents = {
       list: (newLI = document.createElement("LI")),
@@ -24,6 +23,7 @@ function userValidation() {
 
     contents.trash.classList.add("fa-solid", "fa-trash");
     contents.edit.classList.add("fa-solid", "fa-pen-to-square");
+
     contents.text.innerText = inputUser;
 
     contents.list.appendChild(contents.text);
@@ -31,12 +31,13 @@ function userValidation() {
     contents.icons.appendChild(contents.trash);
     contents.list.appendChild(contents.icons);
     ul.appendChild(contents.list);
+
     createData(inputUser);
     form.elements[0].value = "";
+    readData(contents.text, newLI, tempID);
   }
 
   updateData(editIcon, newLI, withoutValue, inputUser, tempID);
-  readData(newLI, tempID);
   deleteData(trashIcon, tempID);
 }
 
@@ -50,13 +51,13 @@ function createData(input) {
     item: input,
   });
   console.log(data);
-  // localStorage.setItem("dataLocal", JSON.stringify(data));
+  // localStorage.setItem("data", JSON.stringify(data));
 }
 
-function readData(task, id) {
+function readData(task, list, id) {
   task.addEventListener("click", () => {
     // DOM
-    task.remove();
+    list.remove();
 
     // Data Manipulation
     data = data.filter((item) => item.id !== id);
