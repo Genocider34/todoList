@@ -84,6 +84,8 @@ li {
 }
 
 li:hover {
+  text-decoration: line-through;
+
   border-color: orangered;
   transition: border-color color 300ms ease-in-out;
 }

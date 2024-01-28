@@ -1,8 +1,12 @@
-const form = document.querySelector("form");
-const ul = document.querySelector("ul");
-// data = JSON.parse(localStorage.getItem("data")) || [];
-let data = [];
-let tempID = 1;
+const elements = {
+  form: document.querySelector("form"),
+  ul: document.querySelector("ul"),
+  data: [],
+  tempID: 1,
+};
+let { form, ul, data, tempID } = elements;
+
+// let data = JSON.parse(localStorage.getItem("dataStorage")) || [];
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -17,24 +21,25 @@ function userValidation() {
       list: (newLI = document.createElement("LI")),
       trash: (trashIcon = document.createElement("i")),
       edit: (editIcon = document.createElement("i")),
-      icons: (icons = document.createElement("DIV")),
+      icons: (iconsContainer = document.createElement("DIV")),
       text: (span = document.createElement("SPAN")),
     };
+    const { list, trash, edit, icons, text } = contents;
 
-    contents.trash.classList.add("fa-solid", "fa-trash");
-    contents.edit.classList.add("fa-solid", "fa-pen-to-square");
+    trash.classList.add("fa-solid", "fa-trash");
+    edit.classList.add("fa-solid", "fa-pen-to-square");
 
-    contents.text.innerText = inputUser;
+    text.innerText = inputUser;
 
-    contents.list.appendChild(contents.text);
-    contents.icons.appendChild(contents.edit);
-    contents.icons.appendChild(contents.trash);
-    contents.list.appendChild(contents.icons);
-    ul.appendChild(contents.list);
+    list.appendChild(text);
+    icons.appendChild(edit);
+    icons.appendChild(trash);
+    list.appendChild(icons);
+    ul.appendChild(list);
 
     createData(inputUser);
     form.elements[0].value = "";
-    readData(contents.text, newLI, tempID);
+    readData(text, newLI, tempID);
   }
 
   updateData(editIcon, newLI, withoutValue, inputUser, tempID);
@@ -51,7 +56,7 @@ function createData(input) {
     item: input,
   });
   console.log(data);
-  // localStorage.setItem("data", JSON.stringify(data));
+  // localStorage.setItem("dataStorage", JSON.stringify(data));
 }
 
 function readData(task, list, id) {
