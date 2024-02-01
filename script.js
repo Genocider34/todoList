@@ -1,3 +1,9 @@
+// refactor icons to var
+// fix local storage
+// add a date
+// add a checkbox and uncheck function
+// add a refresh button
+
 const elements = {
   form: document.querySelector("form"),
   ul: document.querySelector("ul"),
