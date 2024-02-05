@@ -50,3 +50,7 @@ section {
 .icons i {
   padding: 0 4px;
 }
+
+input {
+  margin-top: 10px;
+}

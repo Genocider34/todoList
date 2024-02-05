@@ -63,6 +63,7 @@ h1 {
   border-bottom: 2px solid #82d0f8;
   width: 20rem;
   margin-bottom: 1rem;
+  font-size: 1rem;
 }
 
 #input-user:focus {
@@ -91,4 +92,30 @@ li:hover {
 
 i {
   padding: 0 6px;
+}
+
+@media (max-width: 850px) {
+  h1 {
+    font-size: 4rem;
+  }
+  #input-user {
+    width: 15rem;
+  }
+  li {
+    width: 500px;
+  }
+}
+
+@media (max-width: 500px) {
+  h1 {
+    font-size: 3rem;
+    /* color: black; */
+  }
+  #input-user {
+    width: 12rem;
+  }
+
+  li {
+    width: 350px;
+  }
 }
