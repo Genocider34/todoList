@@ -1,5 +1,8 @@
+// ------------------------ QUOTES -----------------------------//
+
+// --------------------------- TIME ---------------------------//
 function myTime() {
-  const time = document.getElementById("time");
+  const time = document.querySelector(".time");
 
   setInterval(() => {
     let currentTime = new Date();
@@ -7,73 +10,73 @@ function myTime() {
   }, 1000);
 }
 
-// ---------------- to do list --------------------//
+// ---------------- TO DO LIST --------------------//
 
 // ELEMENTS
-/* <i class="fa-solid fa-circle-check"></i> */
 const mainSection = document.querySelector("main");
 const input = document.querySelector("input");
 const form = document.querySelector("form");
+
+// VAR
 let data = [];
-let idValue = 0;
+// let section = document.querySelector("section");
+
+// ICONS
+const UNCHECK = "fa-regular fa-circle";
+const CHECK = "fa-regular fa-circle-check";
+
+// renderToDo();
+
+// Form Submit
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  createList();
+  renderToDo();
+});
 
 function createList() {
-  form.addEventListener("submit", (e) => {
-    e.preventDefault();
-    const inputValue = input.value.trim();
-    const isDuplicate = data.some(({ task }) => task == inputValue);
-    const isEmpty = inputValue !== "";
+  const inputValue = input.value.trim();
+  const isDuplicate = data.some(({ task }) => task == inputValue);
+  const isEmpty = inputValue !== "";
 
-    if (isEmpty && !isDuplicate) {
-      // Clear's input
-      input.value = "";
+  if (isEmpty && !isDuplicate) {
+    // Clear's input
+    input.value = "";
 
-      idValue++;
-      data.push({
-        task: inputValue,
-        id: idValue,
-        checked: false,
-      });
-
-      data.forEach(() => {
-        createElements();
-      });
-    }
-  });
-}
-
-// function completeTodo() {
-//   const list = document.querySelector(".list");
-//   list.addEventListener("click", (e) => {
-//     data.forEach(() => {
-//       const target = e.target;
-//       console.log(target);
-//     });
-//     // const parentElement = target.parentElement;
-//   });
-// }
-
-function createElements() {
-  mainSection.innerHTML = "";
-
-  data.forEach(({ task, id, checked }) => {
-    mainSection.innerHTML += `
-    <section>
-      <div class="list" id="${id}">
+    data.push({
+      task: inputValue,
+      checked: false,
+    });
+  }
+  // Render List
+  function renderToDo() {
+    mainSection.innerHTML = "";
+    data.forEach((todo, index) => {
+      mainSection.innerHTML += `
+    <section id="${index}">
+      <div class="list">
         <div class="information" >
-          <i class="fa-regular fa-circle"></i>
-          <span>${task}</span>
+          <i class=" ${todo.checked ? CHECK : UNCHECK}"></i>
+          <span>${todo.task}</span>
         </div>
   
         <div class="icons">
-          <i class="fa-solid fa-pen-to-square"></i>
-          <i class="fa-solid fa-trash"></i>
+          <i class="fa-solid fa-pen-to-square" data-action="edit"></i>
+          <i class="fa-solid fa-trash" data-action="delete"></i>
         </div>
       </div>
     </section>`;
-  });
-  // completeTodo();
-}
+    });
+    // completeTodo();
+  }
 
-createList();
-myTime();
+  // Add event Listener to elements
+  section.addEventListener("click", (e) => {
+    const target = e.target;
+    console.log(target);
+  });
+
+  // createList();
+  // myTime()
+}
