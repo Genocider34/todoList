@@ -35,6 +35,7 @@ form.addEventListener("submit", (e) => {
   renderToDo();
 });
 
+// Create List
 function createList() {
   const inputValue = input.value.trim();
   const isDuplicate = data.some(({ task }) => task == inputValue);
@@ -49,13 +50,14 @@ function createList() {
       checked: false,
     });
   }
-  // Render List
-  function renderToDo() {
-    mainSection.innerHTML = "";
-    data.forEach((todo, index) => {
-      mainSection.innerHTML += `
-    <section id="${index}">
-      <div class="list">
+}
+
+// Render List
+function renderToDo() {
+  mainSection.innerHTML = "";
+  data.forEach((todo, index) => {
+    mainSection.innerHTML += `
+    <section id="${index} class="list">
         <div class="information" >
           <i class=" ${todo.checked ? CHECK : UNCHECK}"></i>
           <span>${todo.task}</span>
@@ -65,18 +67,18 @@ function createList() {
           <i class="fa-solid fa-pen-to-square" data-action="edit"></i>
           <i class="fa-solid fa-trash" data-action="delete"></i>
         </div>
-      </div>
     </section>`;
-    });
-    // completeTodo();
-  }
-
-  // Add event Listener to elements
-  section.addEventListener("click", (e) => {
-    const target = e.target;
-    console.log(target);
   });
-
-  // createList();
-  // myTime()
+  // completeTodo();
 }
+
+// Add event Listener to elements
+mainSection.addEventListener("click", (e) => {
+  const target = e.target;
+  const parentElement = target.parentElement;
+
+  // if (target.className !== "list") return;
+});
+
+// createList();
+// myTime()

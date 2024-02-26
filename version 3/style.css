@@ -1,0 +1,55 @@
+body {
+  font-family: "Roboto", sans-serif;
+  font-size: 1.5rem;
+}
+
+.flex {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.container {
+  border: 1px solid gold;
+  margin: 0 auto;
+  max-width: 1000px;
+}
+
+header {
+  padding: 2em 0;
+  background-color: teal;
+}
+
+.header__notification {
+  color: red;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.header__input {
+  padding: 0.2em 0.5em;
+}
+
+.task__block {
+  width: 100%;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0 0.5em;
+}
+
+.items {
+  margin: 0 0.5em;
+}
+
+.task {
+  margin: 0.3em 0;
+}
+
+/* HOVER */
+.items:hover {
+  cursor: pointer;
+}
+
+.task-item:hover {
+  text-decoration: line-through;
+}

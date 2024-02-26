@@ -65,12 +65,10 @@ section {
   margin: 4px 0;
   padding: 15px;
   border: 1px solid gold;
-}
-
-.list {
   display: flex;
   justify-content: space-between;
 }
+
 
 .icons i {
   padding: 0 4px;
